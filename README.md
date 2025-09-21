@@ -25,6 +25,23 @@ javascript/
   main.js
 ```
 
+## 🌐 GitHub Pages
+Denne appen kan deployes automatisk til GitHub Pages via workflowen `.github/workflows/pages.yml`.
+
+### Aktivering første gang
+1. Push koden til repo (`main` eller `master`).
+2. Gå til: Repository → Settings → Pages.
+3. Under Build and deployment: *(skal automatisk stå på GitHub Actions)*.
+4. Første workflow-kjøring: Se fanen Actions → "Deploy to GitHub Pages" → vent til grønn hake.
+5. Siden blir tilgjengelig på:
+   - `https://<brukernavn>.github.io/<repo-navn>/` (eks: `https://mahmoud2406.github.io/filmsok/`).
+
+### Manuell deploy uten workflow (alternativ)
+Opprett en branch `gh-pages` og legg inn filene der, slå på Pages med den branchen. Workflowen er likevel anbefalt.
+
+### Base path hensyn
+Fordi appen ligger under en undermappe (`/<repo-navn>/`), bruk relative stier (slik som nå). Unngå absolute `/` i lenker.
+
 ## 🔧 Videre forbedringer (forslag)
 - Modal med detaljer når man klikker et kort
 - Favoritter lagret i LocalStorage
