@@ -1,0 +1,110 @@
+/* =========
+   Global styles for FilmSøk
+   ========= */
+:root {
+  --bg: #0f1115;
+  --bg-alt: #171a21;
+  --surface: #1f242d;
+  --surface-alt: #2a313c;
+  --text: #ecf2f8;
+  --text-dim: #9aa8b5;
+  --accent: #4da3ff;
+  --accent-glow: 199 100% 55%;
+  --danger: #ff4d61;
+  --warn: #ffb347;
+  --radius-sm: 4px;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --shadow: 0 4px 12px -2px rgba(0,0,0,.4), 0 2px 4px -1px rgba(0,0,0,.3);
+  --transition: 140ms ease;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+}
+
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+  margin:0;
+  background: radial-gradient(circle at 25% 15%, #1c2430 0, #0f1115 70%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.visually-hidden { position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; }
+
+.site-header {
+  padding: clamp(1rem, 2.5vw, 2.5rem) clamp(1rem, 4vw, 3rem) 1rem;
+  text-align:center;
+}
+.app-title { margin:0 0 .25rem; font-size:clamp(1.9rem, 4vw, 3rem); letter-spacing:.5px; }
+.tagline { margin:.25rem 0 1rem; color: var(--text-dim); font-size:.95rem; }
+
+.search-form { display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
+.search-input {
+  flex:1 1 320px;
+  min-width:250px;
+  max-width:480px;
+  padding:.85rem 1rem;
+  background: var(--surface);
+  color: var(--text);
+  border:1px solid var(--surface-alt);
+  border-radius: var(--radius);
+  font-size:1rem;
+  outline:none;
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: var(--transition), box-shadow 200ms ease;
+}
+.search-input:focus { border-color: var(--accent); box-shadow:0 0 0 3px hsl(var(--accent-glow) / .35); }
+.search-input::placeholder { color: #607080; }
+
+.search-btn {
+  background: linear-gradient(135deg, var(--accent), #1d6de0);
+  color:#fff;
+  border:none;
+  padding:.85rem 1.25rem;
+  font-size:1rem;
+  border-radius: var(--radius);
+  cursor:pointer;
+  font-weight:600;
+  letter-spacing:.5px;
+  display:flex; align-items:center; gap:.4rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.search-btn:hover, .search-btn:focus { filter:brightness(1.08); }
+.search-btn:active { transform:translateY(1px); }
+
+.help-text { font-size:.75rem; opacity:.7; margin-top:.75rem; }
+
+.main { width: min(1400px, 100%); margin:0 auto; padding: 0 clamp(.75rem, 3vw, 2.25rem) 4rem; }
+
+.status { min-height:1.5rem; margin:.5rem 0 1rem; font-size:.95rem; }
+.status.loading { color: var(--accent); }
+.status.error { color: var(--danger); }
+.status.warn { color: var(--warn); }
+
+.results-grid { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); align-items:start; }
+
+.movie-card { position:relative; background: linear-gradient(155deg, var(--surface), var(--surface-alt)); border:1px solid #2d3742; border-radius: var(--radius-lg); padding:.85rem .85rem 1rem; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:.55rem; min-height:260px; overflow:hidden; outline:none; }
+.movie-card:focus-visible { box-shadow:0 0 0 3px hsl(var(--accent-glow) / .4); }
+.movie-card:hover { transform:translateY(-3px); transition:250ms cubic-bezier(.4,.8,.2,1); }
+
+.poster-wrapper { aspect-ratio: 2/3; background:#222; border-radius: var(--radius-sm); position:relative; overflow:hidden; }
+.poster { width:100%; height:100%; object-fit:cover; display:block; filter: saturate(1.1); }
+.year { position:absolute; top:6px; left:6px; background: rgba(0,0,0,.6); padding:2px 6px; font-size:.65rem; border-radius: 30px; letter-spacing:.5px; }
+
+.title { font-size: .95rem; line-height:1.2; margin:0; font-weight:600; letter-spacing:.4px; max-height:2.4em; overflow:hidden; }
+.meta { margin:0; font-size:.7rem; opacity:.7; letter-spacing:.5px; }
+
+.empty { text-align:center; margin:3rem 0 2rem; opacity:.7; }
+
+.spinner { width:32px; height:32px; border:4px solid #2d3b46; border-top-color: var(--accent); border-radius:50%; animation: spin 1s linear infinite; margin:1.25rem auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.site-footer { text-align:center; padding:2.5rem 1rem 3rem; font-size:.75rem; opacity:.55; }
+
+/* Responsive tweaks */
+@media (max-width: 660px){
+  .main { padding-bottom:3rem; }
+  .movie-card { min-height: 240px; }
+  .results-grid { gap: .9rem; }
+}

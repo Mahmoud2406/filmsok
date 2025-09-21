@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FilmSøk</title>
+    <meta name="description" content="Søk etter filmer med IMDB uoffisielt API" />
+    <link rel="preconnect" href="https://imdb.iamidiotareyoutoo.com" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="app-title">🎬 FilmSøk</h1>
+      <p class="tagline">Finn filmer raskt – skriv et søkeord og trykk Enter</p>
+      <form id="searchForm" class="search-form" role="search" aria-label="Filmsøk">
+        <label class="visually-hidden" for="searchInput">Søk etter film</label>
+        <input
+          id="searchInput"
+          name="q"
+          class="search-input"
+          type="text"
+          placeholder="Søk f.eks. Batman, Spiderman, Titanic..."
+          autocomplete="off"
+          spellcheck="false"
+          aria-describedby="searchHelp"
+        />
+        <button type="submit" class="search-btn" aria-label="Søk">Søk</button>
+      </form>
+      <div id="searchHelp" class="help-text">Minimum 2 tegn. Automatisk søk etter et kort øyeblikk.</div>
+    </header>
+
+    <main class="main" id="mainContent">
+      <section id="status" class="status" aria-live="polite"></section>
+      <div id="results" class="results-grid" aria-live="polite" aria-busy="false"></div>
+      <template id="movieCardTemplate">
+        <article class="movie-card" tabindex="0">
+          <div class="poster-wrapper">
+            <img class="poster" alt="" loading="lazy" />
+            <span class="year"></span>
+          </div>
+          <h2 class="title"></h2>
+          <p class="meta"></p>
+        </article>
+      </template>
+      <div id="emptyState" class="empty" hidden>
+        <p>Ingen resultater ennå. Skriv et søk for å starte.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Data fra uoffisielt IMDB endepunkt. Kun demonstrasjon.
+        <br />Laget av deg ✨
+      </p>
+    </footer>
+
+    <script src="./javascript/main.js" defer></script>
+  </body>
+</html>
